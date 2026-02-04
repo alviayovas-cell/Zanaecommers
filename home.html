@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZanaShop - Modern E-commerce Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #f8961e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--light-gray);
+            border-radius: 50px;
+            padding: 10px 20px;
+            width: 300px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 0 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            color: var(--gray);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .icon-btn:hover {
+            color: var(--primary);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--danger);
+            color: white;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard-preview {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dashboard-header {
+            height: 40px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 10px;
+        }
+
+        .dashboard-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27ca3f; }
+
+        .dashboard-content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .dashboard-item {
+            height: 100px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-item:nth-child(1) { background: #e3f2fd; }
+        .dashboard-item:nth-child(2) { background: #f3e5f5; }
+        .dashboard-item:nth-child(3) { background: #e8f5e9; }
+        .dashboard-item:nth-child(4) { background: #fff3e0; }
+        .dashboard-item:nth-child(5) { background: #fce4ec; }
+        .dashboard-item:nth-child(6) { background: #e0f7fa; }
+
+        /* Features Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features {
+            padding: 100px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon i {
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Architecture Section */
+        .architecture {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .architecture-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .arch-diagram {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            overflow-x: auto;
+        }
+
+        .arch-layers {
+            display: flex;
+            justify-content: space-between;
+            min-width: 1000px;
+        }
+
+        .arch-layer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .layer-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .layer-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 200px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .layer-item:hover {
+            background: var(--light-gray);
+            transform: scale(1.05);
+        }
+
+        /* Database Schema */
+        .database {
+            padding: 100px 0;
+        }
+
+        .schema-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            overflow-x: auto;
+        }
+
+        .schema-table {
+            min-width: 1200px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .schema-table th {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .schema-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .schema-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .schema-table td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--light-gray);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Code Preview */
+        .code-preview {
+            background: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .code-header {
+            background: #2d2d2d;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ccc;
+        }
+
+        .code-body {
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        pre {
+            color: #d4d4d4;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .token-keyword { color: #569cd6; }
+        .token-function { color: #dcdcaa; }
+        .token-string { color: #ce9178; }
+        .token-comment { color: #6a9955; }
+        .token-operator { color: #d4d4d4; }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #b0b7c3;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b7c3;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .search-box {
+                display: none;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .dashboard-preview {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .features, .architecture, .database {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-shopping-bag"></i>
+                <span>ZanaShop</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#database">Database</a></li>
+                    <li><a href="#frontend">Frontend</a></li>
+                    <li><a href="#api">APIs</a></li>
+                    <li><a href="#deployment">Deployment</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search products...">
+                </div>
+                
+                <button class="icon-btn">
+                    <i class="far fa-user"></i>
+                </button>
+                
+                <button class="icon-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                
+                <button class="icon-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </button>
+                
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Modern E-commerce Platform</h1>
+                <p>A fully responsive, scalable e-commerce solution with AI-powered features, secure payments, multi-vendor support, and advanced analytics.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="demo.html" class="btn">View Demo</a>
+                   
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="dashboard-preview">
+                    <div class="dashboard-header">
+                        <div class="dashboard-dot red"></div>
+                        <div class="dashboard-dot yellow"></div>
+                        <div class="dashboard-dot green"></div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-item">
+                            <i class="fas fa-chart-line" style="font-size: 24px; color: #4361ee; margin-bottom: 10px;"></i>
+                            <span style="font-weight: 600;">Analytics</span>
+                        </div>
+                        <div class="dashboard-item">
+                            <i class="fas fa-box" style="font-size: 24px; color: #7209b7; margin-bottom: 10px;"></i>
+                            <span style="font-weight: 600;">Products</span>
+                        </div>
+                        <div class="dashboard-item">
+                            <i class="fas fa-shopping-cart" style="font-size: 24px; color: #4cc9f0; margin-bottom: 10px;"></i>
+                            <span style="font-weight: 600;">Orders</span>
+                        </div>
+                        <div class="dashboard-item">
+                            <i class="fas fa-users" style="font-size: 24px; color: #f8961e; margin-bottom: 10px;"></i>
+                            <span style="font-weight: 600;">Users</span>
+                        </div>
+                        <div class="dashboard-item">
+                            <i class="fas fa-robot" style="font-size: 24px; color: #f72585; margin-bottom: 10px;"></i>
+                            <span style="font-weight: 600;">AI Bot</span>
+                        </div>
+                        <div class="dashboard-item">
+                            <i class="fas fa-shield-alt" style="font-size: 24px; color: #06d6a0; margin-bottom: 10px;"></i>
+                            <span style="font-weight: 600;">Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Core & Advanced Features</h2>
+                <p>Our platform includes all essential e-commerce features plus advanced AI capabilities and analytics.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Product Management</h3>
+                    <p>Manage categories, variations, inventory, pricing, and digital/physical products with an intuitive admin panel.</p>
+                    <a href="#" style="color: var(--primary); font-weight: 500;">Learn more →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>Personalized product suggestions using machine learning algorithms based on user behavior and preferences.</p>
+                    <a href="#" style="color: var(--primary); font-weight: 500;">Learn more →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Compliance</h3>
+                    <p>HTTPS, JWT authentication, encryption, 2FA, GDPR compliance, privacy policy, and secure payment processing.</p>
+                    <a href="#" style="color: var(--primary); font-weight: 500;">Learn more →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Multi-language & Currency</h3>
+                    <p>Support for multiple languages, currencies, and regional settings with automatic conversion and localization.</p>
+                    <a href="#" style="color: var(--primary); font-weight: 500;">Learn more →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Comprehensive dashboard with sales analytics, traffic reports, conversion tracking, and customer insights.</p>
+                    <a href="#" style="color: var(--primary); font-weight: 500;">Learn more →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Shipping & Fulfillment</h3>
+                    <p>Integrated shipping solutions, real-time tracking, returns management, and multi-vendor support.</p>
+                    <a href="#" style="color: var(--primary); font-weight: 500;">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <div class="section-title">
+                <h2>System Architecture</h2>
+                <p>Modular, scalable architecture following microservices principles with API-first design.</p>
+            </div>
+            
+            <div class="architecture-container">
+                <div class="arch-diagram">
+                    <div class="arch-layers">
+                        <div class="arch-layer">
+                            <div class="layer-title">Presentation Layer</div>
+                            <div class="layer-item">React/Next.js Frontend</div>
+                            <div class="layer-item">Mobile App (React Native)</div>
+                            <div class="layer-item">Admin Dashboard</div>
+                            <div class="layer-item">Vendor Portal</div>
+                        </div>
+                        
+                        <div class="arch-layer">
+                            <div class="layer-title">API Gateway</div>
+                            <div class="layer-item">Authentication</div>
+                            <div class="layer-item">Rate Limiting</div>
+                            <div class="layer-item">Request Routing</div>
+                            <div class="layer-item">Load Balancing</div>
+                        </div>
+                        
+                        <div class="arch-layer">
+                            <div class="layer-title">Microservices</div>
+                            <div class="layer-item">User Service</div>
+                            <div class="layer-item">Product Service</div>
+                            <div class="layer-item">Order Service</div>
+                            <div class="layer-item">Payment Service</div>
+                            <div class="layer-item">AI Service</div>
+                        </div>
+                        
+                        <div class="arch-layer">
+                            <div class="layer-title">Data Layer</div>
+                            <div class="layer-item">MySQL (Transactions)</div>
+                            <div class="layer-item">MongoDB (Catalog)</div>
+                            <div class="layer-item">Redis (Cache)</div>
+                            <div class="layer-item">Elasticsearch (Search)</div>
+                        </div>
+                        
+                        <div class="arch-layer">
+                            <div class="layer-title">Infrastructure</div>
+                            <div class="layer-item">AWS/Azure Cloud</div>
+                            <div class="layer-item">Docker Containers</div>
+                            <div class="layer-item">Kubernetes</div>
+                            <div class="layer-item">CI/CD Pipeline</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tabs" id="tech-tabs">
+                    <button class="tab-btn active" data-tab="backend">Backend</button>
+                    <button class="tab-btn" data-tab="frontend">Frontend</button>
+                    <button class="tab-btn" data-tab="database">Database</button>
+                    <button class="tab-btn" data-tab="hosting">Hosting</button>
+                </div>
+                
+                <div class="tab-content active" id="backend">
+                    <h3 style="margin-bottom: 20px;">Backend Technology Stack</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Node.js + Express</h4>
+                            <p>High-performance JavaScript runtime for building scalable APIs and microservices.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Django (Python)</h4>
+                            <p>For AI/ML services, analytics, and admin panel with built-in security features.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Laravel (PHP)</h4>
+                            <p>Optional for rapid development of vendor management and content modules.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="frontend">
+                    <h3 style="margin-bottom: 20px;">Frontend Technology Stack</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">React/Next.js</h4>
+                            <p>Component-based UI with server-side rendering for optimal performance and SEO.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Vue.js/Nuxt.js</h4>
+                            <p>Alternative framework option for progressive web app development.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Tailwind CSS</h4>
+                            <p>Utility-first CSS framework for rapid UI development and responsive design.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="database">
+                    <h3 style="margin-bottom: 20px;">Database Technology Stack</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">MySQL</h4>
+                            <p>Relational database for transactional data (orders, users, payments).</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">MongoDB</h4>
+                            <p>NoSQL database for product catalog, reviews, and unstructured data.</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 10px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Redis</h4>
+                            <p>In-memory data store for caching, session management, and real-time features.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Database Schema -->
+    <section class="database" id="database">
+        <div class="container">
+            <div class="section-title">
+                <h2>Database Schema</h2>
+                <p>Optimized database design with relationships, indexes, and partitioning for high performance.</p>
+            </div>
+            
+            <div class="schema-container">
+                <table class="schema-table">
+                    <thead>
+                        <tr>
+                            <th>Table Name</th>
+                            <th>Description</th>
+                            <th>Key Fields</th>
+                            <th>Relationships</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>users</td>
+                            <td>Stores user account information</td>
+                            <td>id, email, password_hash, role, created_at</td>
+                            <td>orders, reviews, addresses</td>
+                        </tr>
+                        <tr>
+                            <td>products</td>
+                            <td>Product catalog with variants</td>
+                            <td>id, sku, name, price, category_id, inventory</td>
+                            <td>categories, product_images, reviews</td>
+                        </tr>
+                        <tr>
+                            <td>categories</td>
+                            <td>Product categorization hierarchy</td>
+                            <td>id, name, slug, parent_id, image_url</td>
+                            <td>products, category_attributes</td>
+                        </tr>
+                        <tr>
+                            <td>orders</td>
+                            <td>Customer orders and status</td>
+                            <td>id, user_id, total, status, payment_id</td>
+                            <td>users, order_items, payments</td>
+                        </tr>
+                        <tr>
+                            <td>order_items</td>
+                            <td>Individual items within orders</td>
+                            <td>id, order_id, product_id, quantity, price</td>
+                            <td>orders, products</td>
+                        </tr>
+                        <tr>
+                            <td>payments</td>
+                            <td>Payment transactions and status</td>
+                            <td>id, order_id, amount, method, status</td>
+                            <td>orders, refunds</td>
+                        </tr>
+                        <tr>
+                            <td>reviews</td>
+                            <td>Product ratings and reviews</td>
+                            <td>id, product_id, user_id, rating, comment</td>
+                            <td>products, users</td>
+                        </tr>
+                        <tr>
+                            <td>cart</td>
+                            <td>Shopping cart sessions</td>
+                            <td>id, user_id, session_id, created_at</td>
+                            <td>cart_items, users</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h3 style="margin-bottom: 20px;">Sample API Code</h3>
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span>product-service.js - Node.js Product API</span>
+                        <button style="background: var(--primary); color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer;">Copy</button>
+                    </div>
+                    <div class="code-body">
+                        <pre><code><span class="token-keyword">const</span> express = <span class="token-function">require</span>(<span class="token-string">'express'</span>);
+<span class="token-keyword">const</span> router = express.<span class="token-function">Router</span>();
+<span class="token-keyword">const</span> Product = <span class="token-function">require</span>(<span class="token-string">'../models/Product'</span>);
+<span class="token-keyword">const</span> { authenticate, authorize } = <span class="token-function">require</span>(<span class="token-string">'../middleware/auth'</span>);
+
+<span class="token-comment">// Get all products with pagination and filters</span>
+router.<span class="token-function">get</span>(<span class="token-string">'/'</span>, <span class="token-keyword">async</span> (req, res) => {
+    <span class="token-keyword">try</span> {
+        <span class="token-keyword">const</span> { page = 1, limit = 20, category, minPrice, maxPrice, sort } = req.query;
+        <span class="token-keyword">const</span> query = {};
+        
+        <span class="token-keyword">if</span> (category) query.category = category;
+        <span class="token-keyword">if</span> (minPrice <span class="token-operator">||</span> maxPrice) {
+            query.price = {};
+            <span class="token-keyword">if</span> (minPrice) query.price.$gte = Number(minPrice);
+            <span class="token-keyword">if</span> (maxPrice) query.price.$lte = Number(maxPrice);
+        }
+        
+        <span class="token-keyword">const</span> products = <span class="token-keyword">await</span> Product.<span class="token-function">find</span>(query)
+            .<span class="token-function">sort</span>(sort <span class="token-operator">||</span> <span class="token-string">'-createdAt'</span>)
+            .<span class="token-function">limit</span>(limit * 1)
+            .<span class="token-function">skip</span>((page - 1) * limit);
+        
+        <span class="token-keyword">const</span> count = <span class="token-keyword">await</span> Product.<span class="token-function">countDocuments</span>(query);
+        
+        res.<span class="token-function">json</span>({
+            success: <span class="token-keyword">true</span>,
+            data: products,
+            pagination: {
+                total: count,
+                page: Number(page),
+                pages: Math.<span class="token-function">ceil</span>(count / limit)
+            }
+        });
+    } <span class="token-keyword">catch</span> (err) {
+        res.<span class="token-function">status</span>(500).<span class="token-function">json</span>({ success: <span class="token-keyword">false</span>, error: err.message });
+    }
+});
+
+<span class="token-comment">// Create new product (admin only)</span>
+router.<span class="token-function">post</span>(<span class="token-string">'/'</span>, authenticate, authorize(<span class="token-string">'admin'</span>), <span class="token-keyword">async</span> (req, res) => {
+    <span class="token-keyword">try</span> {
+        <span class="token-keyword">const</span> product = <span class="token-keyword">new</span> <span class="token-function">Product</span>(req.body);
+        <span class="token-keyword">await</span> product.<span class="token-function">save</span>();
+        
+        <span class="token-comment">// Invalidate cache for product listings</span>
+        <span class="token-function">invalidateCache</span>(<span class="token-string">'products'</span>);
+        
+        res.<span class="token-function">status</span>(201).<span class="token-function">json</span>({ success: <span class="token-keyword">true</span>, data: product });
+    } <span class="token-keyword">catch</span> (err) {
+        res.<span class="token-function">status</span>(400).<span class="token-function">json</span>({ success: <span class="token-keyword">false</span>, error: err.message });
+    }
+});
+
+module.exports = router;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment & Scaling -->
+    <section class="architecture" id="deployment" style="padding-bottom: 100px;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Deployment Roadmap & Scaling Plan</h2>
+                <p>Step-by-step deployment strategy with scaling considerations for high traffic.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                    <div style="width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 20px;">1</div>
+                    <h3 style="margin-bottom: 15px;">Development Phase</h3>
+                    <ul style="padding-left: 20px; color: var(--gray);">
+                        <li style="margin-bottom: 10px;">Set up CI/CD pipeline (GitHub Actions/Jenkins)</li>
+                        <li style="margin-bottom: 10px;">Containerize with Docker</li>
+                        <li style="margin-bottom: 10px;">Implement unit & integration tests</li>
+                        <li>Set up staging environment</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                    <div style="width: 50px; height: 50px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 20px;">2</div>
+                    <h3 style="margin-bottom: 15px;">Initial Deployment</h3>
+                    <ul style="padding-left: 20px; color: var(--gray);">
+                        <li style="margin-bottom: 10px;">Deploy to AWS/Azure/Google Cloud</li>
+                        <li style="margin-bottom: 10px;">Set up load balancer & auto-scaling</li>
+                        <li style="margin-bottom: 10px;">Configure CDN for static assets</li>
+                        <li>Implement monitoring (Prometheus/Grafana)</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                    <div style="width: 50px; height: 50px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 20px;">3</div>
+                    <h3 style="margin-bottom: 15px;">Scaling Strategy</h3>
+                    <ul style="padding-left: 20px; color: var(--gray);">
+                        <li style="margin-bottom: 10px;">Database sharding & replication</li>
+                        <li style="margin-bottom: 10px;">Microservices architecture</li>
+                        <li style="margin-bottom: 10px;">Caching with Redis/Memcached</li>
+                        <li>Message queues for async processing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                <h3 style="margin-bottom: 20px;">Performance Optimization</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Frontend</h4>
+                        <ul style="color: var(--gray);">
+                            <li>Code splitting & lazy loading</li>
+                            <li>Image optimization & WebP format</li>
+                            <li>Service workers for PWA</li>
+                            <li>Server-side rendering (Next.js)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Backend</h4>
+                        <ul style="color: var(--gray);">
+                            <li>Database indexing & query optimization</li>
+                            <li>API response caching</li>
+                            <li>Connection pooling</li>
+                            <li>GraphQL for efficient data fetching</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Infrastructure</h4>
+                        <ul style="color: var(--gray);">
+                            <li>Global CDN distribution</li>
+                            <li>Auto-scaling groups</li>
+                            <li>Database read replicas</li>
+                            <li>Load testing & optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>NexusShop</h3>
+                    <p style="color: #b0b7c3; margin-bottom: 20px;">A modern, scalable e-commerce platform with AI capabilities and advanced analytics.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#database">Database Schema</a></li>
+                        <li><a href="#api">API Documentation</a></li>
+                        <li><a href="#deployment">Deployment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Technical Stack</h3>
+                    <ul>
+                        <li><a href="#">Node.js / Django</a></li>
+                        <li><a href="#">React / Next.js</a></li>
+                        <li><a href="#">MySQL / MongoDB</a></li>
+                        <li><a href="#">AWS / Azure</a></li>
+                        <li><a href="#">Docker / Kubernetes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Legal & Security</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">GDPR Compliance</a></li>
+                        <li><a href="#">Security Features</a></li>
+                        <li><a href="#">Vendor Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 NexusShop E-commerce Platform. All rights reserved. | Demo Implementation</p>
+                <p style="margin-top: 10px; font-size: 12px;">This is a demonstration of system architecture and code structure for a modern e-commerce platform.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Update cart count randomly (demo)
+        setInterval(() => {
+            const cartCount = document.querySelector('.cart-count');
+            const randomCount = Math.floor(Math.random() * 10) + 1;
+            cartCount.textContent = randomCount;
+        }, 5000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 992) {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Code copy functionality
+        const copyBtn = document.querySelector('.code-header button');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                const code = document.querySelector('.code-body pre').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                    }, 2000);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
